@@ -1,5 +1,9 @@
 package com.example.gamincoder.ip;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,23 +16,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Hostel Management");
         setSupportActionBar(toolbar);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Give us a Feedback", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto","rohitgurijala@gmail.com", null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback about the Application");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "Here is what I think about the application");
+                startActivity(Intent.createChooser(emailIntent, "Send email via"));
+
             }
         });
 
@@ -40,6 +60,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Fragment1 details = new Fragment1();
+        getFragmentManager().beginTransaction().replace(R.id.content1,details).commit();
+
     }
 
     @Override
@@ -80,17 +103,31 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.login) {
+            Fragment1 details = new Fragment1();
+            getFragmentManager().beginTransaction().replace(R.id.content1,details).commit();
+        } else if (id == R.id.adminlog) {
+            Fragment1 details = new Fragment1();
+            getFragmentManager().beginTransaction().replace(R.id.content1,details).commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.complain) {
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                    "mailto","hosteladmin@gmail.com", null));
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Complaint about the facilities.");
+            emailIntent.putExtra(Intent.EXTRA_TEXT, "This is hereby to inform you that");
+            startActivity(Intent.createChooser(emailIntent, "Send email via"));
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.staff) {
+
 
         } else if (id == R.id.nav_share) {
+            Intent i=new Intent(android.content.Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(android.content.Intent.EXTRA_TEXT, "Use this cool feature really soon...");
+            startActivity(Intent.createChooser(i,"Share via"));
 
         } else if (id == R.id.nav_send) {
+
 
         }
 
