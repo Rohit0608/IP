@@ -63,7 +63,7 @@ public class Fragment1 extends Fragment {
                     int y = Passwords.indexOf(pass2);
                     if (x == y) {
                         Toast.makeText(getActivity(), "LogIn Successfull!!!", Toast.LENGTH_LONG).show();
-                        Fragment2 details = new Fragment2();
+                        Fragment2 details = new com.example.gamincoder.ip.Fragment2();
                         getFragmentManager().beginTransaction().replace(R.id.content1, details).commit();
                     } else {
                         Toast.makeText(getActivity(), "Invalid Credentials Specified!!!", Toast.LENGTH_LONG).show();

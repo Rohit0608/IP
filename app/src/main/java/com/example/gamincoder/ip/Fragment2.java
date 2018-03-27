@@ -1,4 +1,4 @@
-package com.example.gamincoder.hostelmanagement;
+package com.example.gamincoder.ip;
 
 
 import android.os.Bundle;
