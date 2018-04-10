@@ -48,9 +48,9 @@ public class Complaint_Card extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, DetailActivity.class);
+                    Intent intent = new Intent(con, DetailActivity.class);
                     intent.putExtra(DetailActivity.EXTRA_POSITION, getAdapterPosition());
-                    context.startActivity(intent);
+                    con.startActivity(intent);
                 }
             });
 

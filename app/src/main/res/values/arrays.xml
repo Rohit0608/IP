@@ -49,4 +49,21 @@
     <item>@drawable/r</item>
     <item>@drawable/r</item>
 </string-array>
+    <string-array name="HostelDetails">
+        <item>This is a the hostel where students of MNIT 1st Year live.
+        The food provided to them in the mess is moderate i.e not so good and not so bad.
+        The internet is provided through a Wi-Fi setup.
+        </item>
+        <item>Like Hostel 1 here also the students of 1st year MNIT are alloted.
+        The facilities are all same as Hostel 1
+        </item>
+        <item>The students of MNIT 2nd Year Live here .
+        This hostel the quikest access to football field
+        </item>
+        <item>Hostel 4 Description</item>
+        <item>Hostel 5 Descrpition</item>
+        <item>Hostel 6 Decription</item>
+        <item>Hostel 7 Decription</item>
+        <item>Hostel 8 Decription</item>
+    </string-array>
 </resources>

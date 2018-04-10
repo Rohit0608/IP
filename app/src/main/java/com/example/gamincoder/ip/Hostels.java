@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 
 public class Hostels extends Fragment {
+    private static Context con;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,9 +52,9 @@ public class Hostels extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, DetailActivity.class);
+                    Intent intent = new Intent(con, HostelDetail.class);
                     intent.putExtra(DetailActivity.EXTRA_POSITION, getAdapterPosition());
-                    context.startActivity(intent);
+                    con.startActivity(intent);
                 }
             });
         }
@@ -69,6 +70,7 @@ public class Hostels extends Fragment {
         private final String[] mHostels;
         private final Drawable[] mHostelPictures;
         public ContentAdapter(Context context) {
+            con=context;
             Resources resources = context.getResources();
             mHostels = resources.getStringArray(R.array.Hostel);
             TypedArray a = resources.obtainTypedArray(R.array.HostelPictures);

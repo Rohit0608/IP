@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "506388026089",
+    "firebase_url": "https://ipfirebaseproject-5d126.firebaseio.com",
+    "project_id": "ipfirebaseproject-5d126",
+    "storage_bucket": "ipfirebaseproject-5d126.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506388026089:android:815261d6baf9aee8",
+        "android_client_info": {
+          "package_name": "com.example.gamincoder.ip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "506388026089-on2ikna50but26drds59k8geqk23s2lu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gamincoder.ip",
+            "certificate_hash": "7c9e7b228d5bcffccc1b43a091b781506f888dc0"
+          }
+        },
+        {
+          "client_id": "506388026089-bk61mh060rsi91al1ctr5f7gikgq976f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYxE-36VkPNcJnGXHH-AjM8vcE_h1TqW8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "506388026089-bk61mh060rsi91al1ctr5f7gikgq976f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
