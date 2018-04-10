@@ -82,7 +82,7 @@
             android:id="@+id/mail_button"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="12dp"
             app:srcCompat="@drawable/ic_feedback_black_24dp"
             android:layout_below="@+id/card_text"
             android:layout_toLeftOf="@+id/sms_button"
