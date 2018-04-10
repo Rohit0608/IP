@@ -24,7 +24,7 @@ public class StartingActivity extends AppCompatActivity {
                     Log.e("start","Error"+e.getMessage());
                 }
 
-                Intent intent=new Intent(StartingActivity.this,MainActivity.class);
+                Intent intent=new Intent(StartingActivity.this,Login.class);
                 StartingActivity.this.startActivity(intent);
                 StartingActivity.this.finish();
             }

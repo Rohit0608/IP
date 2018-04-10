@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 
 public class Complaint_Card extends Fragment {
 
+    private static Context con;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,6 +71,13 @@ public class Complaint_Card extends Fragment {
                 public void onClick(View v) {
                     Snackbar.make(v, "Send Email",
                             Snackbar.LENGTH_LONG).show();
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                            "mailto","rohitgurijala@gmail.com", null));
+                    emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Regarding Issues in some of the hostel facilities ");
+                    emailIntent.putExtra(Intent.EXTRA_TEXT, "This is hereby to notice you that");
+                    con.startActivity(Intent.createChooser(emailIntent, "Send email via"));
+
+
                 }
             });
 
@@ -78,6 +87,10 @@ public class Complaint_Card extends Fragment {
                 public void onClick(View v) {
                     Snackbar.make(v, "Send Message",
                             Snackbar.LENGTH_LONG).show();
+                    Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+                    sendIntent.putExtra("sms_body", "This is hereby to inform you that");
+                    sendIntent.setType("vnd.android-dir/mms-sms");
+                    con.startActivity(sendIntent);
 
 
                 }
@@ -88,6 +101,10 @@ public class Complaint_Card extends Fragment {
                 public void onClick(View v) {
                     Snackbar.make(v, "Call",
                             Snackbar.LENGTH_LONG).show();
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:+91-9131900484"));
+                    con.startActivity(intent);
+
 
 
                 }
@@ -107,6 +124,7 @@ public class Complaint_Card extends Fragment {
         private final Drawable[] mProbPictures;
 
         public ContentAdapter(Context context) {
+            con=context;
             Resources resources = context.getResources();
             mProb = resources.getStringArray(R.array.Prob);
             mProbDesc = resources.getStringArray(R.array.ProbDesc);
