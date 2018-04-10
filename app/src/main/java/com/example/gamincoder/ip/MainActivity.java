@@ -1,77 +1,123 @@
 package com.example.gamincoder.ip;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.view.View;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
 
+/**
+ * Provides UI for the main screen.
+ */
+public class MainActivity extends AppCompatActivity {
 
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Adding Toolbar to Main screen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Hostel Management");
         setSupportActionBar(toolbar);
+        // Setting ViewPager for each Tabs
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+        // Set Tabs inside Toolbar
+        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
+        tabs.setupWithViewPager(viewPager);
+        // Create Navigation drawer and inlfate layout
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        // Adding menu icon to Toolbar
+        ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+            VectorDrawableCompat indicator
+                    = VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme());
+            indicator.setTint(ResourcesCompat.getColor(getResources(),R.color.white,getTheme()));
+            supportActionBar.setHomeAsUpIndicator(indicator);
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
+        }
+        // Set behavior of Navigation drawer
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    // This method will trigger on item Click of navigation menu
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // Set item in checked state
+                        menuItem.setChecked(true);
 
+                        // TODO: handle navigation
 
+                        // Closing drawer on item click
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                    }
+                });
+        // Adding Floating Action Button to bottom right of main view
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Give us a Feedback", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto","rohitgurijala@gmail.com", null));
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback about the Application");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, "Here is what I think about the application");
-                startActivity(Intent.createChooser(emailIntent, "Send email via"));
-
+            public void onClick(View v) {
+                Snackbar.make(v, "Hello Snackbar!",
+                        Snackbar.LENGTH_LONG).show();
             }
         });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        Fragment1 details = new Fragment1();
-        getFragmentManager().beginTransaction().replace(R.id.content1,details).commit();
-
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+    // Add Fragments to Tabs
+    private void setupViewPager(ViewPager viewPager) {
+        Adapter adapter = new Adapter(getSupportFragmentManager());
+        adapter.addFragment(new Complaint_Card(), "Complaints");
+        adapter.addFragment(new Hostels(), "Other Hostels");
+
+        viewPager.setAdapter(adapter);
+    }
+
+    static class Adapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public Adapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
         }
     }
 
@@ -88,51 +134,12 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == android.R.id.home) {
+            mDrawerLayout.openDrawer(GravityCompat.START);
         }
-
         return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.login) {
-            Fragment1 details = new Fragment1();
-            getFragmentManager().beginTransaction().replace(R.id.content1,details).commit();
-        } else if (id == R.id.adminlog) {
-            Fragment1 details = new Fragment1();
-            getFragmentManager().beginTransaction().replace(R.id.content1,details).commit();
-
-        } else if (id == R.id.complain) {
-            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                    "mailto","hosteladmin@gmail.com", null));
-            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Complaint about the facilities.");
-            emailIntent.putExtra(Intent.EXTRA_TEXT, "This is hereby to inform you that");
-            startActivity(Intent.createChooser(emailIntent, "Send email via"));
-
-        } else if (id == R.id.staff) {
-
-
-        } else if (id == R.id.nav_share) {
-            Intent i=new Intent(android.content.Intent.ACTION_SEND);
-            i.setType("text/plain");
-            i.putExtra(android.content.Intent.EXTRA_TEXT, "Use this cool feature really soon...");
-            startActivity(Intent.createChooser(i,"Share via"));
-
-        } else if (id == R.id.nav_send) {
-
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 }

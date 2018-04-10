@@ -44,11 +44,8 @@ public class Fragment1 extends Fragment {
         View view=inflater.inflate(R.layout.fragment_fragment1, container, false);
         String spinnerArray[]={"Hostel Name","Hostel 1(Parijat)","Hostel 2(Chaitanya)","Hostel 3(Satpura)","Hostel 4(Lohit)","Hostel 5(Brihaspathi)","Hostel 6(Kabir)","Hostel 7(Drona)","Hostel 8(Varun)","Aurobindo Hostel"};
 
-        Spinner spinner=view.findViewById(R.id.spinner2);
-        ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(getActivity(),
-                android.R.layout.simple_spinner_dropdown_item,
-                spinnerArray);
-        spinner.setAdapter(spinnerArrayAdapter);
+
+
         instmail=view.findViewById(R.id.editText);
         pass=view.findViewById(R.id.editText2);
         Button button=view.findViewById(R.id.button);
@@ -63,9 +60,7 @@ public class Fragment1 extends Fragment {
                     int y = Passwords.indexOf(pass2);
                     if (x == y) {
                         Toast.makeText(getActivity(), "LogIn Successfull!!!", Toast.LENGTH_LONG).show();
-                        Fragment2 details = new com.example.gamincoder.ip.Fragment2();
-                        getFragmentManager().beginTransaction().replace(R.id.content1, details).commit();
-                    } else {
+                       } else {
                         Toast.makeText(getActivity(), "Invalid Credentials Specified!!!", Toast.LENGTH_LONG).show();
                     }
                 }

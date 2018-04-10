@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    tools:showIn="navigation_view"
+    >
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/login"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_person_black_24dp"
             android:title="Login" />
-        <item
-            android:id="@+id/adminlog"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Admin Login" />
+
         <item
             android:id="@+id/complain"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_feedback_black_24dp"
             android:title="Complain" />
         <item
-            android:id="@+id/staff"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Staff Details" />
+            android:id="@+id/call"
+            android:title="Complain through call"
+            android:icon="@drawable/ic_phone_black_24dp"/>
+        <item
+            android:id="@+id/csms"
+            android:icon="@drawable/ic_message_black_24dp"
+            android:title="Complain Through SMS"/>
     </group>
 
     <item android:title="Communicate">
@@ -28,10 +30,7 @@
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+
         </menu>
     </item>
 

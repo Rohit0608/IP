@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="Prob">
+    <item>Drinking Water</item>
+    <item>Sanitory</item>
+    <item>Mess</item>
+    <item>Electricity and Electrical Appliances</item>
+    <item>Interner Facility</item>
+</string-array>
+<string-array name="ProbDesc">
+    <item>Complain here issues related to water facilities</item>
+    <item>Complain here issues related to sanitory</item>
+    <item>Complain here issues related to Mess</item>
+    <item>Complain here issues related to Elctricity and Electrical Applainces</item>
+    <item>Complain here issues related to Internet Facility</item>
+</string-array>
+    <string-array name="ProbDetails">
+        <item>Details of Drinkin Water Problems</item>
+        <item>Details of Sanitory Problems</item>
+        <item>Details of Mess Problems</item>
+        <item>Details of Electricity Problems</item>
+        <item>Details of Internet Facility Problems</item>
+    </string-array>
+<string-array name="ProbPictures">
+    <item>@drawable/a</item>
+    <item>@drawable/b</item>
+    <item>@drawable/c</item>
+    <item>@drawable/d</item>
+    <item>@drawable/e</item>
+
+</string-array>
+<string-array name="Hostel">
+    <item>Hostel 1</item>
+    <item>Hostel 2</item>
+    <item>Hostel 3</item>
+    <item>Hostel 4</item>
+    <item>Hostel 5</item>
+    <item>Hostel 6</item>
+    <item>Hostel 7</item>
+    <item>Hostel 8</item>
+</string-array>
+<string-array name="HostelPictures">
+    <item>@drawable/r</item>
+    <item>@drawable/r</item>
+    <item>@drawable/r</item>
+    <item>@drawable/r</item>
+    <item>@drawable/r</item>
+    <item>@drawable/r</item>
+    <item>@drawable/r</item>
+    <item>@drawable/r</item>
+</string-array>
+</resources>

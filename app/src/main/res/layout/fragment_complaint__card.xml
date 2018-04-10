@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="304dp"
+    android:layout_gravity="center"
+    android:layout_marginBottom="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:foreground="?attr/selectableItemBackground">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/card_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/a" />
+
+        <TextView
+            android:id="@+id/card_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/card_image"
+            android:layout_marginLeft="16dp"
+            tools:text="Water Related Complaints"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/card_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_image"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            tools:text="Register a complaint for Water related issues"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/action_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_text"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="?attr/colorPrimary"
+            android:text="Complain Through" />
+
+        <ImageButton
+            android:id="@+id/call_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="16dp"
+            app:srcCompat="@drawable/ic_phone_black_24dp"
+            android:layout_below="@+id/card_text"
+            android:layout_alignParentRight="true"
+            style="?android:attr/borderlessButtonStyle"
+            android:tint="@color/colorPrimaryDark" />
+
+        <ImageButton
+            android:id="@+id/sms_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="16dp"
+            app:srcCompat="@drawable/ic_message_black_24dp"
+            android:layout_below="@+id/card_text"
+            android:layout_toLeftOf="@id/call_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:tint="@color/colorPrimaryDark"/>
+
+        <ImageButton
+            android:id="@+id/mail_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="16dp"
+            app:srcCompat="@drawable/ic_feedback_black_24dp"
+            android:layout_below="@+id/card_text"
+            style="?android:attr/borderlessButtonStyle"
+            android:tint="@color/colorPrimaryDark"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
