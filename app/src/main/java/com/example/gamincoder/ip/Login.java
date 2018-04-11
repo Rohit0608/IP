@@ -15,7 +15,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.example.gamincoder.ip.User;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,7 @@ import static android.widget.Toast.LENGTH_LONG;
 public class Login extends AppCompatActivity {
     List<String> Emails = new ArrayList<>();
     List<String> Passwords = new ArrayList<>();
+    private DatabaseReference mDatabase;
 
     EditText mail;
     EditText pass;
@@ -34,6 +37,7 @@ public class Login extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
@@ -53,6 +57,7 @@ public class Login extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "createUserWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
+                                    writeNewUser(user.getDisplayName(),user.getEmail());
                                     Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
                                     Intent i = new Intent(Login.this, MainActivity.class);
                                     startActivity(i);
@@ -104,9 +109,13 @@ public class Login extends AppCompatActivity {
         });*/
         });
 
-    }
-
-    @Override
+        }
+    private void writeNewUser( String name, String email) {
+        User user = new User();
+        user.setUsermail(email);
+        user.setUsername(name);
+        mDatabase.child("users").push().setValue(user);
+    }  @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
