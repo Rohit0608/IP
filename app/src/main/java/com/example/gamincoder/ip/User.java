@@ -7,6 +7,7 @@ package com.example.gamincoder.ip;
 public class User{
     public String usermail;
     public String username;
+
     public User(){}
 
 
@@ -25,4 +26,5 @@ public class User{
     public void setUsername(String username) {
         this.username = username;
     }
+
 }

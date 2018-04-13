@@ -72,7 +72,7 @@ public class Complaint_Card extends Fragment {
                     Snackbar.make(v, "Send Email",
                             Snackbar.LENGTH_LONG).show();
                     Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                            "mailto","rohitgurijala@gmail.com", null));
+                            "mailto","rohitgurijala@gmail.com;rai.utkarsh3099@gmail.com", null));
                     emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Regarding Issues in some of the hostel facilities ");
                     emailIntent.putExtra(Intent.EXTRA_TEXT, "This is hereby to notice you that");
                     con.startActivity(Intent.createChooser(emailIntent, "Send email via"));
@@ -88,6 +88,7 @@ public class Complaint_Card extends Fragment {
                     Snackbar.make(v, "Send Message",
                             Snackbar.LENGTH_LONG).show();
                     Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+                    sendIntent.putExtra("address","9131900484;9140542802");
                     sendIntent.putExtra("sms_body", "This is hereby to inform you that");
                     sendIntent.setType("vnd.android-dir/mms-sms");
                     con.startActivity(sendIntent);
