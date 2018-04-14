@@ -76,16 +76,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/colorAccent"
-                android:text="Location"
+                android:text="Staff Details"
                 android:textSize="20dp"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="16dp" />
 
             <TextView
-                android:id="@+id/Hos_location"
+                android:id="@+id/staff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="MNIT Jaipur" />
+                tools:text="ABC" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

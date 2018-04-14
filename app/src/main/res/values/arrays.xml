@@ -8,18 +8,18 @@
     <item>Interner Facility</item>
 </string-array>
 <string-array name="ProbDesc">
-    <item>Complain here issues related to water facilities</item>
-    <item>Complain here issues related to sanitory</item>
+    <item>Complain here issues related to Water facilities</item>
+    <item>Complain here issues related to Sanitory</item>
     <item>Complain here issues related to Mess</item>
-    <item>Complain here issues related to Elctricity and Electrical Applainces</item>
+    <item>Complain here issues related to Electricity and Electrical Applainces</item>
     <item>Complain here issues related to Internet Facility</item>
 </string-array>
     <string-array name="ProbDetails">
-        <item>Details of Drinkin Water Problems</item>
-        <item>Details of Sanitory Problems</item>
-        <item>Details of Mess Problems</item>
-        <item>Details of Electricity Problems</item>
-        <item>Details of Internet Facility Problems</item>
+        <item>If you have any problems related to water i.e. TDS,Salts,Filters etc , Complain it Directly using our app to reach the concerned authorities" </item>
+        <item>If you have any problems related to cleanliness i.e. Waste Disposal,Dustbins etc , Complain it Directly using our app to reach the concerned authorities" </item>
+        <item>If you have any problems related to Mess i.e. Food,Behaviour of Workers etc , Complain it Directly using our app to reach the concerned authorities" </item>
+        <item>If you have any problems related to Electricity i.e. Uneven PowerCuts,Circuit problems etc , Complain it Directly using our app to reach the concerned authorities" </item>
+        <item>If you have any problems related to Internet i.e. LAN Connectivity,Slow Surfing etc , Complain it Directly using our app to reach the concerned authorities" </item>
     </string-array>
 <string-array name="ProbPictures">
     <item>@drawable/a</item>
@@ -38,32 +38,63 @@
     <item>Hostel 6</item>
     <item>Hostel 7</item>
     <item>Hostel 8</item>
+    <item>Aurobino Hostel</item>
 </string-array>
 <string-array name="HostelPictures">
-    <item>@drawable/r</item>
-    <item>@drawable/r</item>
-    <item>@drawable/r</item>
-    <item>@drawable/r</item>
-    <item>@drawable/r</item>
-    <item>@drawable/r</item>
-    <item>@drawable/r</item>
-    <item>@drawable/r</item>
+    <item>@drawable/h1</item>
+    <item>@drawable/h2</item>
+    <item>@drawable/h3</item>
+    <item>@drawable/h4</item>
+    <item>@drawable/h5</item>
+    <item>@drawable/h6</item>
+    <item>@drawable/h7</item>
+    <item>@drawable/h8</item>
 </string-array>
     <string-array name="HostelDetails">
-        <item>This is a the hostel where students of MNIT 1st Year live.
-        The food provided to them in the mess is moderate i.e not so good and not so bad.
-        The internet is provided through a Wi-Fi setup.
+        <item>Hostel 1 known by PARIJAT hostel basically have students of MNIT from 1st and 2nd Year.
+It has a Badminton court, a Volleyball court and two lawns with a Cycle Stand.
         </item>
-        <item>Like Hostel 1 here also the students of 1st year MNIT are alloted.
-        The facilities are all same as Hostel 1
+        <item>Hostel 2 known by CHAITANYA hostel basically have students of MNIT from 2nd Year.
+It has a Badminton court, a Volleyball court and two lawns with a Cycle Stand.
         </item>
-        <item>The students of MNIT 2nd Year Live here .
-        This hostel the quikest access to football field
+        <item>Hostel 3 known by SATPURA hostel basically have students of MNIT from 3rd Year and 4th Year.
+It has a Badminton court, a Volleyball court and two lawns with a Cycle Stand.
         </item>
-        <item>Hostel 4 Description</item>
-        <item>Hostel 5 Descrpition</item>
-        <item>Hostel 6 Decription</item>
-        <item>Hostel 7 Decription</item>
-        <item>Hostel 8 Decription</item>
+        <item>Hostel 4 known by LOHIT hostel basically have students of IIIT KOTA from 2nd Year.
+It has a Badminton court, a Canteen and two lawns with a Cycle Stand.</item>
+        <item>Hostel 5 known by BRIHASPATI hostel basically have students of MNIT from 3rd Year.
+It has a Badminton court, a Laundry and two lawns with a Cycle Stand.</item>
+        <item>Hostel 6 known by KABIR hostel basically have students of MNIT and IIIT from 1st Year.
+It has a Badminton court and a Volleyball court.</item>
+        <item>Hostel 7 known by DRONA hostel basically have students of MNIT from 1st Year.
+It has a Badminton court, a Volleyball court and a lawn with a Cycle Stand.</item>
+        <item>Hostel 8 known by VARUN hostel basically have students of IIIT from 3rd Year and 4th Year.
+It has a Badminton court, a Volleyball court and two lawns with a Cycle Stand.</item>
+    </string-array>
+    <string-array name="StaffDetails">
+        <item>CHIEF WARDEN : Mr. Ashok Verma
+        WARDEN : Mr. Anil Sharma
+        CARETAKER : Mr. R.S. Kholia</item>
+        <item>CHIEF WARDEN : Mr. Ashish Dwivedi
+        WARDEN : Mr. Anil Rai
+        CARETAKER : Mr. Raman Singh</item>
+        <item>CHIEF WARDEN : Mr. Vishal Bharadwaj
+        WARDEN : Mr. Suraj Singh
+        CARETAKER : Mr. Jayansh</item>
+        <item>CHIEF WARDEN : Mr. Aman Kumar
+        WARDEN : Mr. Vibhor Rawal
+        CARETAKER : Mr. Bhupesh Soni</item>
+        <item>CHIEF WARDEN : Mr. Manvendra Singh
+        WARDEN : Mr. Deepak Gupta
+        CARETAKER : Mr. Meet Jain</item>
+        <item>CHIEF WARDEN : Mr. Utkarsh Rai
+        WARDEN : Mr. Shivam Garg
+        CARETAKER : Mr. Kavish Boyal</item>
+        <item>CHIEF WARDEN : Mr. Ashok Verma
+        WARDEN : Mr. Anil Sharma
+        CARETAKER : Mr. R.S. Kholia</item>
+        <item>CHIEF WARDEN : Mr. Tapan Jain
+        WARDEN : Mr. Parikshit Singh
+        CARETAKER : Mr. Amit Kumar</item>
     </string-array>
 </resources>

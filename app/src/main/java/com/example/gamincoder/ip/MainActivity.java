@@ -1,5 +1,8 @@
 package com.example.gamincoder.ip;
 
+import android.app.FragmentTransaction;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +14,7 @@ import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -22,6 +26,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +39,12 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout mDrawerLayout;
-
+    int NID=1;
+    TextView mail;
+    TextView name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Adding Toolbar to Main screen
@@ -53,8 +62,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        View headerview=navigationView.getHeaderView(0);
+        mail=(TextView) headerview.findViewById(R.id.MAIL);
+        name=(TextView)headerview.findViewById(R.id.NAME);
+        Intent usermail=getIntent();
+        final String gotmail=usermail.getStringExtra("message");
+        final String gotname=usermail.getStringExtra("name");
+        if(gotmail!=null){
+            mail.setText(gotmail);
+            name.setText(gotname);
+
+        }
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+
         // Adding menu icon to Toolbar
 
         // Set behavior of Navigation drawer
@@ -67,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Snackbar.make(v, "Give us a feedback here",
                         Snackbar.LENGTH_LONG).show();
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto","rohitgurijala@gmail.com", null));
+                        "mailto","rohitgurijala@gmail.com;rai.utkarsh3099@gmail.com", null));
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback About the Android Application ");
                 emailIntent.putExtra(Intent.EXTRA_TEXT, "Here are my views and opinions related to the android application");
                 startActivity(Intent.createChooser(emailIntent, "Send email via"));
@@ -141,19 +163,45 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == android.R.id.home) {
             mDrawerLayout.openDrawer(GravityCompat.START);
         }
+        else if(id== R.id.logout){
+            Intent i = new Intent( MainActivity.this,Login.class);
+            MainActivity.this.finish();
+            startActivity(i);
+            Toast.makeText(this, "Log Out Successful", Toast.LENGTH_SHORT).show();
+            displayNotif();
+        }
         return super.onOptionsItemSelected(item);
     }
     public boolean onNavigationItemSelected(MenuItem item){
     int id= item.getItemId();
     if(id==R.id.about){
-
+       Intent i=new Intent(MainActivity.this,AboutDev.class);
+       startActivity(i);
     }
     else if (id==R.id.nav_share){
+        Intent i=new Intent(android.content.Intent.ACTION_SEND);
+        i.setType("text/plain");
+        i.putExtra(android.content.Intent.EXTRA_TEXT, "Use this cool feature really soon...");
+        startActivity(Intent.createChooser(i,"Share via"));
+
 
     }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    protected void displayNotif(){
+        Intent i=new Intent(MainActivity.this,Notification.class);
+        i.putExtra("NID",NID);
+        PendingIntent pendingIntent=PendingIntent.getActivity(MainActivity.this,0,i,0);
+        NotificationManager nm=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        NotificationCompat.Builder notifBuilder;
+        notifBuilder=new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Logged Out")
+                .setContentText("You have logged out of your account Successfully");
+        notifBuilder.setVibrate(new long[] { 100, 100, 100, 100, 100 });
+        nm.notify(NID,notifBuilder.build());
     }
 
 }

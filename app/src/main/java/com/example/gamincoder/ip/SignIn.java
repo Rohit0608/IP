@@ -37,7 +37,7 @@ public class SignIn extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String usermail = mail.getText().toString();
+                final String usermail = mail.getText().toString();
                 String userpass = pass.getText().toString();
                 mAuth.signInWithEmailAndPassword(usermail, userpass)
                         .addOnCompleteListener(SignIn.this, new OnCompleteListener<AuthResult>() {
@@ -47,9 +47,15 @@ public class SignIn extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "signInWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    Toast.makeText(SignIn.this, "Login Successful", Toast.LENGTH_LONG).show();
                                     displayNotif();
+                                    FirebaseUser use=FirebaseAuth.getInstance().getCurrentUser();
+                                    final String name=use.getDisplayName();
+                                    boolean emailVerified = use.isEmailVerified();
+                                    Toast.makeText(SignIn.this, "Login Successful", Toast.LENGTH_LONG).show();
                                     Intent i = new Intent(SignIn.this, MainActivity.class);
+                                    i.putExtra("message",usermail);
+                                    i.putExtra("name",name);
+                                    SignIn.this.finish();
                                     startActivity(i);
                                     //updateUI(user);
                                 } else {
@@ -76,6 +82,7 @@ public class SignIn extends AppCompatActivity {
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("IP")
                 .setContentText("You have Successfully signed in to your account");
+        notifBuilder.setVibrate(new long[] { 100, 100, 100, 100, 100 });
         nm.notify(NID,notifBuilder.build());
     }
 }

@@ -70,22 +70,10 @@
                 android:id="@+id/Prob_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="ABC" />
+                tools:text="ABC"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="?attr/colorAccent"
-                android:text="Location"
-                android:textSize="20dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="16dp" />
 
-            <TextView
-                android:id="@+id/place_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="MNIT Jaipur" />
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

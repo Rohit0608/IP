@@ -34,6 +34,11 @@ public class HostelDetail extends AppCompatActivity {
         TextView placeDetail = (TextView) findViewById(R.id.Hos_detail);
         placeDetail.setText(placeDetails[postion % placeDetails.length]);
 
+        String[] staffDetails = resources.getStringArray(R.array.StaffDetails);
+        TextView staffDetail = (TextView) findViewById(R.id.staff);
+        staffDetail.setText(staffDetails[postion % staffDetails.length]);
+
+
 
         TypedArray placePictures = resources.obtainTypedArray(R.array.HostelPictures);
         ImageView placePicutre = (ImageView) findViewById(R.id.Image);

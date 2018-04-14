@@ -22,4 +22,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="utkinfo">"Hey, This is Utkarsh from IIITK pursuing my B.Tech from ECE.My Coding Skills include C,JAVA,PYTHON,WEB Dev,ARDUINO,RASPBERRY Pi and ANDROID STUDIO."</string>
+    <string name="rohinfo">"This is Rohit Gurijala from ECE 1st Year IIITKota.I know different programming languages like C,Python,Android,Java and Python also have a good knowledge of Web Deveplopment."</string>
 </resources>

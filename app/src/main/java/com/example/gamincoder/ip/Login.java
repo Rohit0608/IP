@@ -1,15 +1,20 @@
 package com.example.gamincoder.ip;
 
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.support.v4.app.NotificationCompat;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,7 +41,8 @@ public class Login extends AppCompatActivity {
     EditText pass;
     Button register;
     String TAG = "abc";
-    EditText num;
+    Spinner num;
+    Spinner spinner;
     String hnum;
     private FirebaseAuth mAuth;
 
@@ -47,17 +53,51 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
+        String spinnerArray[]={"Choose Your Hostel","Hostel 1(Parijat)","Hostel 2(Chaitanya)","Hostel 3(Satpura)","Hostel 4(Lohit)","Hostel 5(Brihaspathi)","Hostel 6(Kabir)","Hostel 7(Drona)","Hostel 8(Varun)","Aurobindo Hostel"};
+
+        final Spinner spinner=(Spinner) findViewById(R.id.spinner);
+        ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(Login.this,
+                android.R.layout.simple_spinner_dropdown_item,
+                spinnerArray);
+        spinner.setAdapter(spinnerArrayAdapter);
         mail = (EditText) findViewById(R.id.Mail);
         pass = (EditText) findViewById(R.id.Password);
         register = (Button) findViewById(R.id.button);
-        num=(EditText)findViewById(R.id.Hnumber);
+        num=(Spinner) findViewById(R.id.spinner);
         already= (Button)findViewById(R.id.already);
+        SharedPreferences settings = getSharedPreferences("MYPREFS", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("hnum", spinner.getSelectedItemPosition());
+        editor.commit();
+        spinner.setSelection(settings.getInt("hnum", 0));
+        hnum=spinner.getSelectedItem().toString();
+        /*if(hnum!="Choose Your Hostel"){
+            register.setEnabled(true);
+        }
+        else{
+            register.setEnabled(false);
+        }*/
+        /*public class SpinnerActivity extends Login implements AdapterView.OnItemSelectedListener{
+            public void onItemSelected(AdapterView<?> parent,View view ,int pos,long id){
+                if(hnum!="Choose Your Hostel"){
+                    register.setEnabled(true);
+                }
+                else{
+                    register.setEnabled(false);
+                }
+            }
+        }*/
+
         register.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                String usermail = mail.getText().toString();
+                final String usermail = mail.getText().toString();
                 String userpass = pass.getText().toString();
-                hnum=num.getText().toString();
+                //hnum=num.getText().toString();
+
+
+
                 mAuth.createUserWithEmailAndPassword(usermail, userpass)
                         .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -67,10 +107,12 @@ public class Login extends AppCompatActivity {
                                     Log.d(TAG, "createUserWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     writeNewUser(user.getDisplayName(),user.getEmail(),hnum);
-                                    Toast.makeText(Login.this, "SignUp Successful", Toast.LENGTH_SHORT).show();
                                     displayNotif();
+                                    final String name = user.getDisplayName();
+                                    Toast.makeText(Login.this, "SignUp Successful", Toast.LENGTH_SHORT).show();
                                     Toast.makeText(Login.this, "PLEASE SIGN IN", Toast.LENGTH_LONG).show();
                                     Intent i = new Intent(Login.this, SignIn.class);
+                                    Login.this.finish();
                                     startActivity(i);
                                     //updateUI(user);
                                 } else {
@@ -138,6 +180,8 @@ public class Login extends AppCompatActivity {
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .setContentTitle("Created Account")
                     .setContentText("Your Account has been created Successfully");
+            notifBuilder.setVibrate(new long[] { 100, 100, 100, 100, 100 });
+
             nm.notify(NID,notifBuilder.build());
         }
     private void writeNewUser( String name, String email, String hnum) {
