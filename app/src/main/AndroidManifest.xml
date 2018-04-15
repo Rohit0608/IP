@@ -19,7 +19,8 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".StartingActivity">
+        <activity android:name=".StartingActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +36,8 @@
         <activity
             android:name=".HostelDetail"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SignIn" />
+        <activity android:name=".SignIn"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Notification">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

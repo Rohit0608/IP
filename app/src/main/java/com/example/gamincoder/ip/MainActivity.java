@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         final String gotname=usermail.getStringExtra("name");
         if(gotmail!=null){
             mail.setText(gotmail);
-            name.setText(gotname);
+
 
         }
         drawer.addDrawerListener(toggle);

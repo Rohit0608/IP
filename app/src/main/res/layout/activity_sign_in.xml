@@ -3,19 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.gamincoder.ip.SignIn"
-    android:background="?attr/selectableItemBackground">
+    android:background="@drawable/login"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="495dp"
+        android:layout_height="350dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/login"
         >"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
@@ -69,27 +69,21 @@
             android:id="@+id/PASS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/passwo"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:ems="10"
             android:gravity="center"
             android:inputType="textPassword"
             android:textColor="@android:color/background_light" />
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-
         <Button
             android:id="@+id/signin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/passwo"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="126dp"
-            android:text="Sign IN" />
+            android:layout_centerHorizontal="true"
+            android:text="Sign IN"
+            android:layout_below="@+id/PASS"/>
 
     </RelativeLayout>
 

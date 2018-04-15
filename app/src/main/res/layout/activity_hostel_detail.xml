@@ -29,7 +29,7 @@
             <ImageView
                 android:id="@+id/Image"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="match_parent"
                 tools:background="@drawable/a"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
@@ -38,7 +38,7 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/Toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 

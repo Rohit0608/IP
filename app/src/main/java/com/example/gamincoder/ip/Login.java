@@ -65,12 +65,7 @@ public class Login extends AppCompatActivity {
         register = (Button) findViewById(R.id.button);
         num=(Spinner) findViewById(R.id.spinner);
         already= (Button)findViewById(R.id.already);
-        SharedPreferences settings = getSharedPreferences("MYPREFS", 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("hnum", spinner.getSelectedItemPosition());
-        editor.commit();
-        spinner.setSelection(settings.getInt("hnum", 0));
-        hnum=spinner.getSelectedItem().toString();
+
         /*if(hnum!="Choose Your Hostel"){
             register.setEnabled(true);
         }
@@ -95,7 +90,12 @@ public class Login extends AppCompatActivity {
                 final String usermail = mail.getText().toString();
                 String userpass = pass.getText().toString();
                 //hnum=num.getText().toString();
-
+                SharedPreferences settings = getSharedPreferences("MYPREFS", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putInt("hnum", spinner.getSelectedItemPosition());
+                editor.commit();
+                spinner.setSelection(settings.getInt("hnum", 0));
+                hnum=spinner.getSelectedItem().toString();
 
 
                 mAuth.createUserWithEmailAndPassword(usermail, userpass)
